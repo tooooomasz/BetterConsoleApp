@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 using System.IO;
-
-// Use DI, Serilog, AppSettings, cake build
 
 namespace ConsoleUI
 {
@@ -26,10 +25,13 @@ namespace ConsoleUI
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-
+                    services.AddTransient<IGreetingService, GreetingService>();
                 })
                 .UseSerilog()
                 .Build();
+
+            var service = ActivatorUtilities.CreateInstance<GreetingService>(host.Services);
+            service.Run();
         }
 
         // allows us to log before we work with our configuration
