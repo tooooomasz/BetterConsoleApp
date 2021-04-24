@@ -34,7 +34,6 @@ namespace ConsoleUI
             service.Run();
         }
 
-        // allows us to log before we work with our configuration
         static void BuildConfig(IConfigurationBuilder builder)
         {
             builder.SetBasePath(Directory.GetCurrentDirectory())
