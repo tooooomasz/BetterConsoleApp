@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 using System.IO;
@@ -21,6 +22,14 @@ namespace ConsoleUI
                 .CreateLogger();
 
             Log.Logger.Information("Application starting");
+
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) =>
+                {
+
+                })
+                .UseSerilog()
+                .Build();
         }
 
         // allows us to log before we work with our configuration
