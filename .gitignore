@@ -335,5 +335,4 @@ ASALocalRun/
 
 # cake
 tools/
-build.cake
-.config/dotnet-tools.json
+
